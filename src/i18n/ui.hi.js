@@ -225,6 +225,9 @@ export const ui = {
   poster: {
     title: 'डिजिटल पोस्टर',
     directions: 'फ़ॉर्मैट और भाषा चुनें, फिर पूरी क्वालिटी वाली PNG डाउनलोड करें। A4 डिज़ाइन को प्रिंट करें या PDF में सेव करें।',
+    downloadPoster: 'पोस्टर डाउनलोड करें (PNG)',
+    printPoster: 'प्रिंट / PDF सेव करें',
+    moreFormats: 'और फ़ॉर्मैट',
     print: 'प्रिंट / PDF सेव करें',
     printHint: 'सही रंगों के लिए प्रिंट सेटिंग में “Background graphics” चालू करें।',
     download: 'PNG डाउनलोड करें',

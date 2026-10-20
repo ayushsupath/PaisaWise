@@ -47,6 +47,15 @@ export default function Advertisement() {
     }
   }, [dimensions.height, dimensions.width])
 
+  useEffect(() => {
+    const clearPosterPrintMode = () => document.documentElement.classList.remove('poster-image-print')
+    window.addEventListener('afterprint', clearPosterPrintMode)
+    return () => {
+      window.removeEventListener('afterprint', clearPosterPrintMode)
+      clearPosterPrintMode()
+    }
+  }, [])
+
   const printA4 = () => {
     if (formatKey !== 'poster') {
       setFormatKey('poster')
@@ -54,6 +63,11 @@ export default function Advertisement() {
       return
     }
     window.print()
+  }
+
+  const printPoster = () => {
+    document.documentElement.classList.add('poster-image-print')
+    window.setTimeout(() => window.print(), 150)
   }
 
   const downloadPng = async () => {
@@ -117,6 +131,35 @@ export default function Advertisement() {
         <h1 className="break-words text-[clamp(1.75rem,5vw,2.5rem)] font-extrabold text-forest">{t('poster.title')}</h1>
         <p className="mt-2 max-w-3xl break-words text-base text-charcoal/70">{t('poster.directions')}</p>
       </div>
+
+      <section className="mx-auto mb-8 grid w-full max-w-[794px] justify-items-center gap-4" aria-label={t('poster.title')}>
+        <img
+          className="featured-poster-image"
+          src="/paisawise-poster.png"
+          alt="PaisaWise advertisement poster: Smart money, smarter you."
+          width="794"
+          height="1123"
+          loading="eager"
+        />
+        <div className="no-print flex flex-wrap justify-center gap-2">
+          <a
+            href="/paisawise-poster.png"
+            download="paisawise-poster.png"
+            className="inline-flex min-h-11 items-center rounded-xl bg-forest px-4 py-2 text-sm font-bold text-cream hover:bg-forest/90"
+          >
+            {t('poster.downloadPoster')}
+          </a>
+          <button
+            type="button"
+            onClick={printPoster}
+            className="min-h-11 rounded-xl border border-forest/20 bg-cream px-4 py-2 text-sm font-bold text-forest hover:border-forest/50"
+          >
+            {t('poster.printPoster')}
+          </button>
+        </div>
+      </section>
+
+      <h2 className="no-print mb-4 text-lg font-bold text-forest">{t('poster.moreFormats')}</h2>
 
       <section className="no-print mb-8 grid gap-5 rounded-2xl border border-forest/10 bg-white p-4 sm:p-5 lg:grid-cols-[1fr_1fr_auto] lg:items-end" aria-label={t('poster.title')}>
         <OptionGroup label={t('poster.format')}>

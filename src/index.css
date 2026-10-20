@@ -680,6 +680,17 @@
   justify-content: center;
 }
 
+.featured-poster-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  border: 1px solid rgb(20 43 39 / 0.12);
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px rgb(20 43 39 / 0.14);
+}
+
 .ad-preview-frame {
   position: relative;
   flex: 0 0 auto;
@@ -763,5 +774,36 @@
     page-break-inside: avoid;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  html.poster-image-print,
+  html.poster-image-print body,
+  html.poster-image-print #root {
+    width: 190mm !important;
+    height: 277mm !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html.poster-image-print .featured-poster-image {
+    position: fixed !important;
+    top: 4mm !important;
+    left: 0 !important;
+    width: 190mm !important;
+    max-width: none !important;
+    height: 269mm !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    object-fit: contain !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    visibility: visible !important;
+  }
+
+  html.poster-image-print .ad-artboard,
+  html.poster-image-print .ad-artboard * {
+    visibility: hidden !important;
   }
 }

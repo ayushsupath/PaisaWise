@@ -225,6 +225,9 @@ export const ui = {
   poster: {
     title: 'Digital poster',
     directions: 'Choose a format and language, then download a full-resolution PNG. Print the A4 design or save it as a PDF.',
+    downloadPoster: 'Download poster (PNG)',
+    printPoster: 'Print / Save as PDF',
+    moreFormats: 'More formats',
     print: 'Print / Save PDF',
     printHint: 'In print settings, enable “Background graphics” for the intended colours.',
     download: 'Download PNG',
